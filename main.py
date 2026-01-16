@@ -214,8 +214,7 @@ def getClickedCell(row, column):
     print("colone"+ selected_column)
     global id
     id = str(qtab.item(row, column).text())
- #   lineEditSuppID.setText(str(qtab.item(row, column).text()))
-    print("lineEditSuppID" + str(qtab.item(row, column).text()))
+    print("Valeur cellule" + str(qtab.item(row, column).text()))
 
 #lineEditSuppID = QLineEdit(fen)
 

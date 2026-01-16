@@ -44,9 +44,10 @@ def SupprimerId():
     conn = sqlite3.connect("projet.db")
     cursor = conn.cursor()
     # requette ici
-    try:
-        cursor.execute("DELETE FROM Persons WHERE PersonID=" + lineEditSuppID.text() + ";")
-    except Exception as e:
+
+    if selected_column == "0" :
+        cursor.execute("DELETE FROM Persons WHERE PersonID=" + id + ";")
+    else :
         print("Bien vouloir sélectionner l'ID du contact à supprimer")
         popup_warning("Attention", "Bien vouloir sélectionner l'ID du contact à supprimer.")
 
@@ -208,9 +209,15 @@ def getClickedCell(row, column):
     print(qtab.item(row, column).text())
     global selected_row
     selected_row = row
+    global selected_column
+    selected_column = str(column)
+    print("colone"+ selected_column)
+    global id
+    id = str(qtab.item(row, column).text())
+ #   lineEditSuppID.setText(str(qtab.item(row, column).text()))
+    print("lineEditSuppID" + str(qtab.item(row, column).text()))
 
-
-#    lineEditSuppID.setText(str(qtab.item(row, column).text()))
+#lineEditSuppID = QLineEdit(fen)
 
 
 qtab.cellClicked.connect(getClickedCell)
